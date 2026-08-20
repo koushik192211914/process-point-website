@@ -61,7 +61,7 @@ const posts = [
     description:
       "Explore key differences between Dynamics 365 and legacy ERP systems to choose the right fit for your business needs.",
     image:
-      "/assets/june23.webp",
+      "/assets/june 23.webp",
     href: "https://pptcorporation.com/dynamics-365-vs-legacy-erp/",
   },
   {
@@ -71,7 +71,7 @@ const posts = [
     description:
       "New to SAP? Discover key modules like MM, SD, FICO, and HR that streamline business processes across industries.",
     image:
-      "/assets/june27.webp",
+      "/assets/june 27.webp",
     href: "https://pptcorporation.com/a-beginners-guide-to-sap-modules/",
   },
   {
