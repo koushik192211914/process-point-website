@@ -31,7 +31,7 @@ const posts = [
     description:
       "Transitioning to Oracle Cloud ERP offers innovation but brings challenges like data, adoption, and security; learn strategies to overcome them.",
     image:
-      "https://pptcorporation.com/wp-content/uploads/2025/07/Top-5-Challenges-in-Migrating-On-Premises-ERPs-to-Oracle-Cloud-ERP.png",
+      "/assets/june 13.webp",
     href: "https://pptcorporation.com/top-5-challenges-in-migrating-on-premises-erps-to-oracle-cloud-erp/",
   },
   {
@@ -51,7 +51,7 @@ const posts = [
     description:
       "Organizations shift from legacy NAV and AX to Dynamics 365 for scalability, integration, and modern features—explore benefits, challenges, and strategies.",
     image:
-      "https://pptcorporation.com/wp-content/uploads/2025/07/Why-Businesses-Are-Moving-from-Microsoft-NAV-AX-to-Dynamics-365.png",
+      "/assets/june20.webp",
     href: "https://pptcorporation.com/why-businesses-are-moving-from-microsoft-nav-ax-to-dynamics-365/",
   },
   {
@@ -61,7 +61,7 @@ const posts = [
     description:
       "Explore key differences between Dynamics 365 and legacy ERP systems to choose the right fit for your business needs.",
     image:
-      "https://pptcorporation.com/wp-content/uploads/2025/07/Dynamics-365-vs.-Legacy-ERP.png",
+      "/assets/june23.webp",
     href: "https://pptcorporation.com/dynamics-365-vs-legacy-erp/",
   },
   {
@@ -71,7 +71,7 @@ const posts = [
     description:
       "New to SAP? Discover key modules like MM, SD, FICO, and HR that streamline business processes across industries.",
     image:
-      "https://pptcorporation.com/wp-content/uploads/2025/07/A-Beginners-Guide-to-SAP-Modules.png",
+      "/assets/june27.webp",
     href: "https://pptcorporation.com/a-beginners-guide-to-sap-modules/",
   },
   {
@@ -91,7 +91,7 @@ const posts = [
     description:
       "With ECC support ending by 2027, explore key differences between ECC and S/4HANA to guide your migration and digital transformation.",
     image:
-      "https://pptcorporation.com/wp-content/uploads/2025/07/SAP-ECC-vs-S4HANA.png",
+      "/assets/july3.webp",
     href: "https://pptcorporation.com/sap-ecc-vs-s-4hana/",
   },
   {
@@ -101,7 +101,7 @@ const posts = [
     description:
       "Discover how HR teams transform from manual processes to intelligent automation with HCM Cloud, overcoming legacy system challenges.",
     image:
-      "https://pptcorporation.com/wp-content/uploads/2025/07/From-Spreadsheets-to-HCM-Cloud.png",
+      "/assets/july7.webp",
     href: "https://pptcorporation.com/from-spreadsheets-to-hcm-cloud/",
   },
   {
@@ -111,7 +111,7 @@ const posts = [
     description:
       "Is your business outgrowing current tools? Discover 10 signs you need ERP for better operations, data, and scalability.",
     image:
-      "https://pptcorporation.com/wp-content/uploads/2025/07/Top-10-Signs-Your-Business-Needs-an-ERP-System.png",
+      "/assets/july 11.webp",
     href: "https://pptcorporation.com/top-10-signs-your-business-needs-an-erp-system/",
   },
   {
@@ -121,7 +121,7 @@ const posts = [
     description:
       "ERP drives digital transformation by enabling real-time visibility, integration, and smart decisions—crucial for growth and competitive advantage.",
     image:
-      "https://pptcorporation.com/wp-content/uploads/2025/07/Why-ERP-Is-the-Backbone-of-Digital-Transformation.png",
+      "/assets/july14.webp",
     href: "https://pptcorporation.com/why-erp-is-the-backbone-of-digital-transformation/",
   },
   {
@@ -131,7 +131,7 @@ const posts = [
     description:
       "Learn how to build an ERP strategy that aligns technology with business goals, driving growth, innovation, and long-term success.",
     image:
-      "https://pptcorporation.com/wp-content/uploads/2025/07/How-to-Build-an-ERP-Strategy-That-Aligns-with-Business-Goals.png",
+      "/assets/july18.webp",
     href: "https://pptcorporation.com/how-to-build-an-erp-strategy/",
   },
   {
@@ -141,7 +141,7 @@ const posts = [
     description:
       "Improve efficiency, accuracy, and visibility with ERP-driven inventory and warehouse management to reduce costs and support scalable business growth.",
     image:
-      "https://pptcorporation.com/wp-content/uploads/2025/07/Smarter-Inventory-and-Warehouse-Management-with-ERP.png",
+      "/assets/july22.webp",
     href: "https://pptcorporation.com/smarter-inventory-and-warehouse-management-with-erp/",
   },
   {
@@ -151,7 +151,7 @@ const posts = [
     description:
       "ERP unifies operations, reporting, and compliance across multiple locations or entities, enabling centralized control with local flexibility.",
     image:
-      "https://pptcorporation.com/wp-content/uploads/2025/07/How-ERP-Helps-in-Multi-Location-or-Multi-Entity-Business-Management.png",
+      "/assets/july 25.webp",
     href: "https://pptcorporation.com/how-erp-helps-in-multi-location-or-multi-entity-business-management/",
   },
   {
@@ -161,7 +161,7 @@ const posts = [
     description:
       "Oracle Application Testing Suite (OATS) automates ERP testing, ensuring faster deployments, improved accuracy, reduced risk, cost savings, and scalability.",
     image:
-      "https://pptcorporation.com/wp-content/uploads/2025/08/Testing-Automation-using-Oracle-Application-Testing-Suite-OATS.png",
+      "/assets/aug1.png",
     href: "https://pptcorporation.com/testing-automation-using-oracle-application-testing-suite-oats/",
   },
 ];
