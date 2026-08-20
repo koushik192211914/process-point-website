@@ -566,49 +566,6 @@ export default function ContactPage() {
 
 
       {/* =====================================================
-          IMAGE PLACEHOLDER
-      ===================================================== */}
-
-      <section className="bg-white px-5 pb-24 lg:px-8">
-
-        <div className="mx-auto max-w-7xl">
-
-          <div className="relative flex min-h-[360px] items-center justify-center overflow-hidden rounded-[2.5rem] border border-blue-100 bg-[#edf7ff]">
-
-            {/* ADD YOUR ORIGINAL IMAGE HERE LATER */}
-
-            <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(0,94,184,.12)_1px,transparent_1px),linear-gradient(90deg,rgba(0,94,184,.12)_1px,transparent_1px)] [background-size:50px_50px]" />
-
-            <div className="relative max-w-xl px-8 text-center">
-
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-2xl text-[#005eb8] shadow-xl">
-                +
-              </div>
-
-              <p className="mt-6 text-xs font-black uppercase tracking-[0.2em] text-[#005eb8]">
-                Image Space
-              </p>
-
-              <h2 className="mt-3 text-3xl font-extrabold text-[#003b7a]">
-                Your Process Point visual goes here
-              </h2>
-
-              <p className="mt-4 leading-7 text-slate-500">
-                We intentionally left this area ready for the original
-                company image. You can add it later without changing
-                the design.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
           FINAL CTA
       ===================================================== */}
 
