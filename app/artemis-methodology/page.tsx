@@ -765,195 +765,133 @@ export default function ArtemisMethodologyPage() {
 
           </div>
 
-          {/* TOOL SELECTOR */}
+          {/* TOOL SELECTOR — IMAGE FOCUSED LAYOUT */}
 
-          <div className="mt-14 grid gap-8 lg:grid-cols-[0.38fr_0.62fr]">
+          <div className="mt-14 grid gap-6 lg:grid-cols-[0.24fr_0.76fr]">
 
-            {/* LEFT TOOL LIST */}
-
-            <div className="rounded-[30px] border border-slate-200 bg-[#f6f9fc] p-3">
-
-              {tools.map((tool, index) => (
-
-                <button
-                  key={tool.id}
-                  type="button"
-                  onClick={() => setActiveTool(index)}
-                  className={`group flex w-full items-center gap-4 rounded-[22px] p-4 text-left transition duration-300 ${
-                    activeTool === index
-                      ? "bg-[#12233d] text-white shadow-lg"
-                      : "text-[#12233d] hover:bg-white"
-                  }`}
-                >
-
-                  <span
-                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-xs font-black ${
+            {/* COMPACT LEFT TOOL NAVIGATION */}
+            <div className="h-fit rounded-[24px] border border-[#1677ff]/15 bg-[#f7fbff] p-2">
+              <div className="space-y-1">
+                {tools.map((tool, index) => (
+                  <button
+                    key={tool.id}
+                    type="button"
+                    onClick={() => setActiveTool(index)}
+                    className={`group flex w-full items-center gap-3 rounded-[16px] px-3 py-3 text-left transition-all duration-300 ${
                       activeTool === index
-                        ? "bg-white/10 text-cyan-300"
-                        : "bg-white text-[#12233d]"
+                        ? "border border-[#1677ff]/25 bg-[#eaf4ff] shadow-[0_8px_24px_rgba(22,119,255,0.10)]"
+                        : "border border-transparent text-[#12233d] hover:border-[#1677ff]/10 hover:bg-white"
                     }`}
                   >
-                    {tool.number}
-                  </span>
+                    <span
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-xs font-black transition ${
+                        activeTool === index
+                          ? "bg-[#1677ff] text-white"
+                          : "bg-white text-[#12233d] shadow-sm"
+                      }`}
+                    >
+                      {tool.number}
+                    </span>
 
-                  <span className="min-w-0 flex-1">
-
-                    <span className="block text-sm font-black">
-                      {tool.name}
+                    <span className="min-w-0 flex-1">
+                      <span
+                        className={`block truncate text-sm font-black ${
+                          activeTool === index ? "text-[#1265d8]" : "text-[#12233d]"
+                        }`}
+                      >
+                        {tool.name}
+                      </span>
+                      <span className="mt-0.5 block truncate text-[11px] font-medium text-[#71839a]">
+                        {tool.category}
+                      </span>
                     </span>
 
                     <span
-                      className={`mt-1 block truncate text-xs ${
+                      className={`ml-auto text-lg transition-all ${
                         activeTool === index
-                          ? "text-slate-400"
-                          : "text-slate-500"
+                          ? "translate-x-0 text-[#1677ff] opacity-100"
+                          : "-translate-x-1 text-[#9aaabd] opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
                       }`}
                     >
-                      {tool.category}
+                      →
                     </span>
-
-                  </span>
-
-                  <ArrowIcon
-                    className={`h-4 w-4 shrink-0 transition group-hover:translate-x-1 ${
-                      activeTool === index
-                        ? "text-cyan-300"
-                        : "text-slate-400"
-                    }`}
-                  />
-
-                </button>
-
-              ))}
-
+                  </button>
+                ))}
+              </div>
             </div>
 
-            {/* RIGHT TOOL DETAIL */}
+            {/* LARGE IMAGE + INFORMATION */}
+            <div className="overflow-hidden rounded-[28px] border-2 border-[#1677ff]/15 bg-white shadow-[0_20px_60px_rgba(22,119,255,0.08)]">
 
-            <div className="relative overflow-hidden rounded-[34px] bg-[#12233d] text-white shadow-[0_30px_80px_rgba(18,35,61,0.16)]">
+              {/* LARGE IMAGE AREA */}
+              <div className="relative flex min-h-[380px] items-center justify-center overflow-hidden bg-[#f5faff] p-5 sm:min-h-[480px] sm:p-8 lg:min-h-[560px] lg:p-10">
+                <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#1677ff]/10 blur-3xl" />
+                <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-[#36b9ff]/10 blur-3xl" />
 
-              <div className="absolute right-[-150px] top-[-150px] h-[400px] w-[400px] rounded-full bg-cyan-400/10 blur-3xl" />
-
-              <div className="relative grid min-h-[580px] lg:grid-cols-2">
-
-                {/* CONTENT */}
-
-                <div className="flex flex-col justify-between p-8 sm:p-12">
-
-                  <div>
-
-                    <div className="flex items-center justify-between">
-
-                      <div className="text-xs font-black uppercase tracking-[0.25em] text-cyan-300">
-                        {selectedTool.category}
-                      </div>
-
-                      <div className="text-5xl font-black text-white/10">
-                        {selectedTool.number}
-                      </div>
-
-                    </div>
-
-                    <h3 className="mt-6 text-4xl font-black tracking-[-0.04em] sm:text-5xl">
-                      {selectedTool.name}
-                    </h3>
-
-                    <p className="mt-6 text-base leading-7 text-slate-300">
-                      {selectedTool.description}
-                    </p>
-
-                    <div className="mt-7 inline-flex rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-xs font-bold text-cyan-200">
-                      {selectedTool.stats}
-                    </div>
-
-                    <div className="mt-9 space-y-3">
-
-                      {selectedTool.bullets.map((bullet) => (
-
-                        <div
-                          key={bullet}
-                          className="flex gap-3 text-sm leading-6 text-slate-300"
-                        >
-
-                          <span className="mt-0.5 text-cyan-300">
-                            <CheckIcon />
-                          </span>
-
-                          <span>{bullet}</span>
-
-                        </div>
-
-                      ))}
-
-                    </div>
-
-                  </div>
-
-                  <div className="mt-10">
-
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-black text-[#12233d] transition hover:-translate-y-1"
-                    >
-                      Discuss ARTEMIS
-                      <ArrowIcon />
-                    </Link>
-
-                  </div>
-
-                </div>
-
-                {/* IMAGE SPACE */}
-
-                {/* TOOL IMAGE
-                    ATLAS screenshot: public/assets/Atlas.png
-                    Use object-contain so the complete screenshot is visible
-                    without cropping or stretching.
-                */}
-                <div className="relative min-h-[300px] overflow-hidden bg-white lg:min-h-full">
-
-                  {/* FALLBACK VISUAL - stays behind the real image */}
-                  <div
-                    className={`absolute inset-0 z-0 bg-gradient-to-br ${selectedTool.color}`}
-                  >
-                    <div
-                      className="absolute inset-0 opacity-20"
-                      style={{
-                        backgroundImage:
-                          "linear-gradient(rgba(255,255,255,.22) 1px, transparent 1px),linear-gradient(90deg,rgba(255,255,255,.22) 1px,transparent 1px)",
-                        backgroundSize: "45px 45px",
-                      }}
-                    />
-
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="text-7xl font-black tracking-[-0.06em] text-white">
-                          {selectedTool.name}
-                        </div>
-
-                        <div className="mt-4 text-xs font-black uppercase tracking-[0.3em] text-white/70">
-                          TOOL VISUAL
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* REAL SCREENSHOT */}
+                <div className="relative z-10 flex w-full items-center justify-center overflow-hidden rounded-[22px] border border-[#1677ff]/15 bg-white p-3 shadow-[0_15px_45px_rgba(18,35,61,0.10)]">
                   <img
                     src={selectedTool.image}
                     alt={`${selectedTool.name} tool screenshot`}
-                    className="absolute inset-0 z-10 h-full w-full bg-white object-contain object-center"
+                    className="block h-auto max-h-[520px] w-full object-contain object-center"
                     onError={(event) => {
                       event.currentTarget.style.display = "none";
                     }}
                   />
-
                 </div>
-
               </div>
 
-            </div>
+              {/* TOOL INFORMATION BELOW IMAGE */}
+              <div className="border-t border-[#1677ff]/10 bg-white p-7 sm:p-9 lg:p-10">
+                <div className="flex items-center justify-between gap-4">
+                  <span className="inline-flex rounded-full border border-[#1677ff]/20 bg-[#eef6ff] px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#1677ff]">
+                    {selectedTool.category}
+                  </span>
+                  <span className="text-4xl font-black text-[#1677ff]/10 sm:text-5xl">
+                    {selectedTool.number}
+                  </span>
+                </div>
 
+                <h3 className="mt-5 text-3xl font-black tracking-[-0.04em] text-[#12233d] sm:text-4xl">
+                  {selectedTool.name}
+                </h3>
+
+                <p className="mt-4 max-w-4xl text-base leading-7 text-[#60738c] sm:text-lg">
+                  {selectedTool.description}
+                </p>
+
+                <div className="mt-5 inline-flex rounded-full border border-[#1677ff]/20 bg-[#eef6ff] px-4 py-2 text-sm font-bold text-[#1265d8]">
+                  {selectedTool.stats}
+                </div>
+
+                <div className="mt-7 grid gap-3 sm:grid-cols-2">
+                  {selectedTool.bullets.map((bullet) => (
+                    <div
+                      key={bullet}
+                      className="flex items-start gap-3 rounded-xl border border-[#1677ff]/10 bg-[#f8fbff] px-4 py-3"
+                    >
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1677ff] text-white">
+                        <CheckIcon />
+                      </span>
+                      <span className="text-sm leading-6 text-[#52647b]">
+                        {bullet}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-8">
+                  <Link
+                    href="/contact"
+                    className="group inline-flex items-center gap-3 rounded-full bg-[#1677ff] px-6 py-3 text-sm font-black text-white shadow-[0_10px_25px_rgba(22,119,255,0.20)] transition duration-300 hover:-translate-y-1 hover:bg-[#075dcc]"
+                  >
+                    Discuss ARTEMIS
+                    <span className="transition duration-300 group-hover:translate-x-1">
+                      <ArrowIcon />
+                    </span>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
