@@ -374,6 +374,7 @@ const comparisons = [
 export default function ArtemisMethodologyPage() {
   const [activeTool, setActiveTool] = useState(0);
   const [comparisonOpen, setComparisonOpen] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   const selectedTool = tools[activeTool];
 
@@ -384,6 +385,16 @@ export default function ArtemisMethodologyPage() {
       document.documentElement.style.scrollBehavior = "";
     };
   }, []);
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const timer = window.setInterval(() => {
+      setActiveTool((currentIndex) => (currentIndex + 1) % tools.length);
+    }, 6000);
+
+    return () => window.clearInterval(timer);
+  }, [isPaused]);
 
   return (
     <main className="min-h-screen overflow-hidden bg-white text-[#12233d]">
@@ -735,17 +746,19 @@ export default function ArtemisMethodologyPage() {
 
       {/* =====================================================
           7 TOOLS
+          SECOND-CODE SHOWCASE MECHANISM
+          Horizontal 1–7 navigation
+          Large image LEFT + information RIGHT
+          Automatic rotation pauses on hover
       ===================================================== */}
 
       <section
         id="tools"
         className="scroll-mt-20 bg-white py-24 lg:py-32"
       >
-
         <div className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-12">
 
           <div className="max-w-3xl">
-
             <div className="text-xs font-black uppercase tracking-[0.25em] text-[#635bff]">
               The seven-tool system
             </div>
@@ -762,140 +775,156 @@ export default function ArtemisMethodologyPage() {
               while the complete system creates a connected implementation
               workflow.
             </p>
-
           </div>
 
-          {/* TOOL SELECTOR — IMAGE FOCUSED LAYOUT */}
+          {/* HORIZONTAL TOOL NAVIGATION — copied mechanism from second code */}
+          <div
+            className="mt-14 overflow-x-auto pb-3"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <div className="grid min-w-[900px] grid-cols-7 gap-2 rounded-2xl border border-[#1677ff]/15 bg-[#f8fbff] p-2">
+              {tools.map((tool, index) => {
+                const active = activeTool === index;
 
-          <div className="mt-14 grid gap-6 lg:grid-cols-[0.24fr_0.76fr]">
-
-            {/* COMPACT LEFT TOOL NAVIGATION */}
-            <div className="h-fit rounded-[24px] border border-[#1677ff]/15 bg-[#f7fbff] p-2">
-              <div className="space-y-1">
-                {tools.map((tool, index) => (
+                return (
                   <button
                     key={tool.id}
                     type="button"
                     onClick={() => setActiveTool(index)}
-                    className={`group flex w-full items-center gap-3 rounded-[16px] px-3 py-3 text-left transition-all duration-300 ${
-                      activeTool === index
-                        ? "border border-[#1677ff]/25 bg-[#eaf4ff] shadow-[0_8px_24px_rgba(22,119,255,0.10)]"
-                        : "border border-transparent text-[#12233d] hover:border-[#1677ff]/10 hover:bg-white"
+                    className={`rounded-xl px-3 py-4 text-center transition-all duration-300 ${
+                      active
+                        ? "bg-[#1677ff] text-white shadow-[0_10px_25px_rgba(22,119,255,0.18)]"
+                        : "bg-white text-[#425a75] hover:bg-[#eef6ff] hover:text-[#1265d8]"
                     }`}
                   >
-                    <span
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-xs font-black transition ${
-                        activeTool === index
-                          ? "bg-[#1677ff] text-white"
-                          : "bg-white text-[#12233d] shadow-sm"
-                      }`}
-                    >
+                    <span className="block text-[10px] font-black tracking-[0.18em] opacity-60">
                       {tool.number}
                     </span>
-
-                    <span className="min-w-0 flex-1">
-                      <span
-                        className={`block truncate text-sm font-black ${
-                          activeTool === index ? "text-[#1265d8]" : "text-[#12233d]"
-                        }`}
-                      >
-                        {tool.name}
-                      </span>
-                      <span className="mt-0.5 block truncate text-[11px] font-medium text-[#71839a]">
-                        {tool.category}
-                      </span>
+                    <span className="mt-1 block text-sm font-black">
+                      {tool.name}
                     </span>
-
-                    <span
-                      className={`ml-auto text-lg transition-all ${
-                        activeTool === index
-                          ? "translate-x-0 text-[#1677ff] opacity-100"
-                          : "-translate-x-1 text-[#9aaabd] opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
-                      }`}
-                    >
-                      →
+                    <span className="mt-1 block truncate text-[10px] font-medium opacity-70">
+                      {tool.category}
                     </span>
                   </button>
-                ))}
-              </div>
+                );
+              })}
             </div>
+          </div>
 
-            {/* LARGE IMAGE + INFORMATION */}
-            <div className="overflow-hidden rounded-[28px] border-2 border-[#1677ff]/15 bg-white shadow-[0_20px_60px_rgba(22,119,255,0.08)]">
+          {/* TOOL SHOWCASE — IMAGE LEFT / MATTER RIGHT */}
+          <div
+            className="mt-7 overflow-hidden rounded-[32px] border border-[#1677ff]/15 bg-white shadow-[0_25px_70px_rgba(18,55,100,0.10)]"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <div className="grid lg:grid-cols-[1.18fr_0.82fr]">
 
-              {/* LARGE IMAGE AREA */}
-              <div className="relative flex min-h-[380px] items-center justify-center overflow-hidden bg-[#f5faff] p-5 sm:min-h-[480px] sm:p-8 lg:min-h-[560px] lg:p-10">
-                <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#1677ff]/10 blur-3xl" />
-                <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-[#36b9ff]/10 blur-3xl" />
-
-                <div className="relative z-10 flex w-full items-center justify-center overflow-hidden rounded-[22px] border border-[#1677ff]/15 bg-white p-3 shadow-[0_15px_45px_rgba(18,35,61,0.10)]">
+              {/* IMAGE */}
+              <div className="relative flex min-h-[480px] items-center justify-center border-b border-[#1677ff]/10 bg-[#f8fbff] p-5 sm:p-8 lg:min-h-[620px] lg:border-b-0 lg:border-r">
+                <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[26px] border border-[#1677ff]/12 bg-white p-4 shadow-[0_15px_45px_rgba(18,55,100,0.08)] sm:p-7">
                   <img
+                    key={selectedTool.image}
                     src={selectedTool.image}
-                    alt={`${selectedTool.name} tool screenshot`}
-                    className="block h-auto max-h-[520px] w-full object-contain object-center"
-                    onError={(event) => {
-                      event.currentTarget.style.display = "none";
-                    }}
+                    alt={`${selectedTool.name} — ${selectedTool.category}`}
+                    className="block max-h-[560px] w-full object-contain object-center transition-all duration-500"
                   />
+
+                  <div className="pointer-events-none absolute inset-0 rounded-[26px] ring-1 ring-inset ring-[#1677ff]/10" />
+
+                  <div className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-xs font-black text-[#1677ff] shadow-[0_8px_24px_rgba(18,55,100,0.10)] ring-1 ring-[#1677ff]/10">
+                    {selectedTool.number} · {selectedTool.name}
+                  </div>
                 </div>
               </div>
 
-              {/* TOOL INFORMATION BELOW IMAGE */}
-              <div className="border-t border-[#1677ff]/10 bg-white p-7 sm:p-9 lg:p-10">
-                <div className="flex items-center justify-between gap-4">
-                  <span className="inline-flex rounded-full border border-[#1677ff]/20 bg-[#eef6ff] px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#1677ff]">
-                    {selectedTool.category}
-                  </span>
-                  <span className="text-4xl font-black text-[#1677ff]/10 sm:text-5xl">
-                    {selectedTool.number}
-                  </span>
+              {/* MATTER */}
+              <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-14">
+                <div className="inline-flex w-fit rounded-full border border-[#1677ff]/15 bg-[#eef6ff] px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#1677ff]">
+                  {selectedTool.category}
                 </div>
 
-                <h3 className="mt-5 text-3xl font-black tracking-[-0.04em] text-[#12233d] sm:text-4xl">
+                <h3 className="mt-5 text-4xl font-black tracking-[-0.045em] text-[#07172f] sm:text-5xl">
                   {selectedTool.name}
                 </h3>
 
-                <p className="mt-4 max-w-4xl text-base leading-7 text-[#60738c] sm:text-lg">
+                <p className="mt-6 text-lg leading-8 text-[#5b6f88]">
                   {selectedTool.description}
                 </p>
 
-                <div className="mt-5 inline-flex rounded-full border border-[#1677ff]/20 bg-[#eef6ff] px-4 py-2 text-sm font-bold text-[#1265d8]">
-                  {selectedTool.stats}
-                </div>
-
-                <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                  {selectedTool.bullets.map((bullet) => (
-                    <div
-                      key={bullet}
-                      className="flex items-start gap-3 rounded-xl border border-[#1677ff]/10 bg-[#f8fbff] px-4 py-3"
-                    >
-                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1677ff] text-white">
-                        <CheckIcon />
-                      </span>
-                      <span className="text-sm leading-6 text-[#52647b]">
-                        {bullet}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
                 <div className="mt-8">
-                  <Link
-                    href="/contact"
-                    className="group inline-flex items-center gap-3 rounded-full bg-[#1677ff] px-6 py-3 text-sm font-black text-white shadow-[0_10px_25px_rgba(22,119,255,0.20)] transition duration-300 hover:-translate-y-1 hover:bg-[#075dcc]"
+                  <div className="text-xs font-black uppercase tracking-[0.2em] text-[#8091a7]">
+                    Key Capabilities
+                  </div>
+
+                  <div className="mt-5 space-y-3">
+                    {selectedTool.bullets.map((bullet) => (
+                      <div
+                        key={bullet}
+                        className="flex items-start gap-3 rounded-xl border border-[#1677ff]/10 bg-[#f8fbff] px-4 py-3 text-sm leading-6 text-[#425a75]"
+                      >
+                        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1677ff] text-xs font-black text-white">
+                          ✓
+                        </span>
+                        <span>{bullet}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-9 flex flex-wrap items-end justify-between gap-6 border-t border-[#1677ff]/10 pt-7">
+                  <div>
+                    <div className="text-4xl font-black text-[#1677ff]">
+                      {selectedTool.stats}
+                    </div>
+                    <div className="mt-2 text-sm text-[#8091a7]">
+                      ARTEMIS tool metric
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveTool((activeTool + 1) % tools.length);
+                    }}
+                    className="rounded-full bg-[#1677ff] px-6 py-3 text-sm font-black text-white transition duration-300 hover:-translate-y-1 hover:bg-[#075dcc]"
                   >
-                    Discuss ARTEMIS
-                    <span className="transition duration-300 group-hover:translate-x-1">
-                      <ArrowIcon />
-                    </span>
-                  </Link>
+                    Next Tool →
+                  </button>
+                </div>
+
+                <div className="mt-5 text-xs font-semibold text-[#94a3b8]">
+                  {isPaused
+                    ? "Paused — move the cursor away to continue"
+                    : "Automatically changing every 6 seconds"}
                 </div>
               </div>
             </div>
           </div>
 
-        </div>
+          {/* TOOL SUMMARY */}
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {[
+              ["7", "Integrated ARTEMIS tools"],
+              ["70–95%", "Reduced consultant dependency"],
+              ["30–40%", "Faster implementation"],
+            ].map(([value, label]) => (
+              <div
+                key={label}
+                className="rounded-[22px] border border-[#1677ff]/10 bg-[#f8fbff] p-6"
+              >
+                <div className="text-2xl font-black text-[#1677ff]">
+                  {value}
+                </div>
+                <div className="mt-2 text-sm text-[#71839a]">
+                  {label}
+                </div>
+              </div>
+            ))}
+          </div>
 
+        </div>
       </section>
 
       {/* =====================================================
