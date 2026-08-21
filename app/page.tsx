@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 /* =========================================================
    TYPES
@@ -165,26 +165,89 @@ const tools: Tool[] = [
 
 export default function HomePage() {
   const [activeTool, setActiveTool] = useState("atlas");
-  const [isPaused, setIsPaused] = useState(false);
 
   const selectedTool =
     tools.find((tool) => tool.id === activeTool) ?? tools[0];
 
-  useEffect(() => {
-    if (isPaused) return;
-
-    const timer = window.setInterval(() => {
-      setActiveTool((currentId) => {
-        const currentIndex = tools.findIndex((tool) => tool.id === currentId);
-        return tools[(currentIndex + 1) % tools.length].id;
-      });
-    }, 6000);
-
-    return () => window.clearInterval(timer);
-  }, [isPaused]);
-
   return (
     <main className="min-h-screen bg-white text-[#07172f]">
+
+      {/* =====================================================
+          SINGLE HEADER
+      ===================================================== */}
+
+      <header className="sticky top-0 z-50 border-b border-[#1677ff]/10 bg-[#06162d]/95 text-white backdrop-blur-xl">
+
+        <div className="mx-auto flex h-[78px] max-w-[1500px] items-center justify-between px-6 sm:px-10 lg:px-16">
+
+          {/* LOGO */}
+
+          <a
+            href="#top"
+            className="flex items-center gap-3"
+          >
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-sm font-black text-[#086bcf]">
+              PPT
+            </div>
+
+            <div className="hidden sm:block">
+              <div className="text-[15px] font-black tracking-wide">
+                PROCESS POINT
+              </div>
+
+              <div className="text-[9px] uppercase tracking-[0.22em] text-[#1677ff]">
+                Enabling Business Processes
+              </div>
+            </div>
+          </a>
+
+
+          {/* NAVIGATION */}
+
+          <nav className="hidden items-center gap-8 lg:flex">
+
+            <a
+              href="#platforms"
+              className="text-sm font-semibold text-white/75 transition hover:text-[#1265d8]"
+            >
+              Platforms
+            </a>
+
+            <a
+              href="#artemis"
+              className="text-sm font-semibold text-white/75 transition hover:text-[#1265d8]"
+            >
+              ARTEMIS
+            </a>
+
+            <a
+              href="#advantages"
+              className="text-sm font-semibold text-white/75 transition hover:text-[#1265d8]"
+            >
+              Advantages
+            </a>
+
+            <a
+              href="#competencies"
+              className="text-sm font-semibold text-white/75 transition hover:text-[#1265d8]"
+            >
+              Competencies
+            </a>
+
+          </nav>
+
+
+          <a
+            href="#contact"
+            className="rounded-full bg-white px-6 py-3 text-sm font-bold text-[#07172f] transition duration-300 hover:-translate-y-0.5 hover:bg-[#1677ff]"
+          >
+            Talk to an Expert
+          </a>
+
+        </div>
+
+      </header>
+
 
       {/* =====================================================
           HERO
@@ -192,7 +255,7 @@ export default function HomePage() {
 
       <section
         id="top"
-        className="relative overflow-hidden bg-white"
+        className="relative overflow-hidden bg-[#f4f9ff]"
       >
 
         {/* BACKGROUND */}
@@ -222,7 +285,7 @@ export default function HomePage() {
               </div>
 
 
-              <h1 className="max-w-4xl text-6xl font-black leading-[0.91] tracking-[-0.06em] text-[#07172f] sm:text-7xl lg:text-[92px]">
+              <h1 className="max-w-4xl text-6xl font-black leading-[0.91] tracking-[-0.06em] text-white sm:text-7xl lg:text-[92px]">
 
                 ERP
 
@@ -234,7 +297,7 @@ export default function HomePage() {
                   engineered
                 </span>
 
-                <span className="block text-[#07172f]">
+                <span className="block text-white">
                   differently.
                 </span>
 
@@ -252,14 +315,14 @@ export default function HomePage() {
 
                 <a
                   href="#artemis"
-                  className="rounded-full bg-[#1677ff] px-7 py-4 text-sm font-black text-[#06172f] transition duration-300 hover:-translate-y-1 hover:bg-white"
+                  className="rounded-full bg-[#1677ff] px-7 py-4 text-sm font-black text-white transition duration-300 hover:-translate-y-1 hover:bg-white"
                 >
                   Explore ARTEMIS
                 </a>
 
                 <a
                   href="#platforms"
-                  className="rounded-full bg-white px-7 py-4 text-sm font-bold text-[#07172f] ring-1 ring-[#1677ff]/15 ring-1 ring-white/15 transition duration-300 hover:bg-white/10"
+                  className="rounded-full bg-white/5 px-7 py-4 text-sm font-bold text-white ring-1 ring-white/15 transition duration-300 hover:bg-[#eef6ff]"
                 >
                   Explore Platforms
                 </a>
@@ -269,29 +332,28 @@ export default function HomePage() {
             </div>
 
 
-            {/* =================================================
-                HERO IMAGE — ERP IMPLEMENTATION
-                Replace this path with your own image if needed:
-                public/assets/erp-implementation.png
-            ================================================= */}
+            {/* HERO IMAGE SPACE */}
 
-            <div className="relative min-h-[520px] overflow-hidden rounded-[40px] border border-white/10 bg-[#f8fbff] p-4 shadow-[0_30px_90px_rgba(0,0,0,0.28)] sm:p-6">
+            <div className="relative min-h-[520px]">
 
-              {/* Decorative frame */}
-              <div className="absolute inset-4 rounded-[30px] border border-cyan-300/15 sm:inset-6" />
+              <div className="absolute inset-0 rounded-[40px] bg-gradient-to-br from-cyan-400/10 via-blue-500/10 to-purple-500/10" />
 
-              <div className="relative flex h-[488px] items-center justify-center overflow-hidden rounded-[30px] bg-white/5 sm:h-[488px]">
+              <div className="relative flex h-full min-h-[520px] items-center justify-center overflow-hidden rounded-[40px]">
 
-                <img
-                  src="/assets/hero-ai-erp.png"
-                  alt="ERP implementation and ARTEMIS transformation"
-                  className="max-h-full max-w-full object-contain p-3 sm:p-5"
-                />
+                {/* PLACE YOUR HERO IMAGE HERE */}
 
-                <div className="pointer-events-none absolute inset-0 rounded-[30px] ring-1 ring-inset ring-white/10" />
+                <div className="flex h-full w-full items-center justify-center text-center">
 
-                <div className="absolute bottom-5 left-5 rounded-full border border-white/10 bg-[#1677ff]/75 px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-cyan-200 backdrop-blur-md">
-                  ERP Transformation
+                  <div>
+                    <div className="text-xs font-bold uppercase tracking-[0.3em] text-[#1677ff]">
+                      Image Space
+                    </div>
+
+                    <div className="mt-3 text-sm text-white/40">
+                      Add your ERP / ARTEMIS hero image
+                    </div>
+                  </div>
+
                 </div>
 
               </div>
@@ -450,7 +512,7 @@ export default function HomePage() {
                       {value}
                     </div>
 
-                    <div className="mt-3 text-sm leading-6 text-[#07172f]/75">
+                    <div className="mt-3 text-sm leading-6 text-white/75">
                       {label}
                     </div>
 
@@ -471,29 +533,38 @@ export default function HomePage() {
 
       {/* =====================================================
           ARTEMIS SECTION
-          White + blue redesign
-          Horizontal 1–7 navigation
-          Large image LEFT + matter RIGHT
-          Automatic rotation pauses on hover
       ===================================================== */}
 
       <section
         id="artemis"
-        className="relative overflow-hidden bg-white"
+        className="relative overflow-hidden bg-[#f4f9ff]"
       >
-        <div className="mx-auto max-w-[1500px] px-6 py-24 sm:px-10 lg:px-16">
+
+        {/* BACKGROUND GLOWS */}
+
+        <div className="absolute left-0 top-1/4 h-[500px] w-[500px] rounded-full bg-[#1677ff]/6 blur-[140px]" />
+
+        <div className="absolute right-0 bottom-0 h-[500px] w-[500px] rounded-full bg-[#1677ff]/5 blur-[140px]" />
+
+
+        <div className="relative mx-auto max-w-[1500px] px-6 py-28 sm:px-10 lg:px-16">
 
           {/* HEADER */}
+
           <div className="max-w-4xl">
+
             <span className="text-xs font-black uppercase tracking-[0.28em] text-[#1677ff]">
               The ARTEMIS Methodology
             </span>
 
-            <h2 className="mt-5 text-5xl font-black leading-[0.95] tracking-[-0.055em] text-[#07172f] sm:text-6xl lg:text-7xl">
+            <h2 className="mt-5 text-5xl font-black leading-[0.95] tracking-[-0.055em] text-white sm:text-6xl lg:text-7xl">
+
               Seven tools.
+
               <span className="block text-[#1677ff]">
                 One connected system.
               </span>
+
             </h2>
 
             <p className="mt-7 max-w-3xl text-lg leading-8 text-[#5b6f88]">
@@ -501,171 +572,233 @@ export default function HomePage() {
               reduce consultant dependency and create a more
               consistent implementation experience.
             </p>
+
           </div>
 
+
           {/* =================================================
-              HORIZONTAL TOOL NAVIGATION
+              TOOL NAVIGATION
           ================================================= */}
-          <div
-            className="mt-14 overflow-x-auto pb-3"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
-            <div className="grid min-w-[900px] grid-cols-7 gap-2 rounded-2xl border border-[#1677ff]/15 bg-[#f8fbff] p-2">
+
+          <div className="mt-16 overflow-x-auto pb-4">
+
+            <div className="flex min-w-max gap-3">
+
               {tools.map((tool) => {
+
                 const active = activeTool === tool.id;
 
                 return (
                   <button
                     key={tool.id}
-                    type="button"
                     onClick={() => setActiveTool(tool.id)}
-                    className={`rounded-xl px-3 py-4 text-center transition-all duration-300 ${
-                      active
-                        ? "bg-[#1677ff] text-white shadow-[0_10px_25px_rgba(22,119,255,0.18)]"
-                        : "bg-white text-[#425a75] hover:bg-[#eef6ff] hover:text-[#1265d8]"
-                    }`}
+                    className={`
+                      relative rounded-full px-6 py-3.5
+                      text-sm font-black tracking-wide
+                      transition-all duration-300
+                      ${
+                        active
+                          ? "bg-[#1677ff] text-white shadow-[0_10px_40px_rgba(22,119,255,0.18)]"
+                          : "bg-white text-[#52647b] hover:bg-[#eef6ff] hover:text-[#1265d8]"
+                      }
+                    `}
                   >
-                    <span className="block text-[10px] font-black tracking-[0.18em] opacity-60">
+
+                    <span className="mr-2 opacity-50">
                       {tool.number}
                     </span>
-                    <span className="mt-1 block text-sm font-black">
-                      {tool.name}
-                    </span>
-                    <span className="mt-1 block truncate text-[10px] font-medium opacity-70">
-                      {tool.short}
-                    </span>
+
+                    {tool.name}
+
                   </button>
                 );
+
               })}
+
             </div>
+
           </div>
+
 
           {/* =================================================
-              TOOL SHOWCASE
-              IMAGE LEFT / MATTER RIGHT
+              SELECTED TOOL SHOWCASE
           ================================================= */}
+
           <div
-            className="mt-7 overflow-hidden rounded-[32px] border border-[#1677ff]/15 bg-white shadow-[0_25px_70px_rgba(18,55,100,0.10)]"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
+            className="mt-8 grid overflow-hidden rounded-[38px] bg-white lg:grid-cols-[0.85fr_1.15fr]"
           >
-            <div className="grid lg:grid-cols-[1.18fr_0.82fr]">
+
+            {/* IMAGE */}
+
+            <div className="relative min-h-[450px] overflow-hidden bg-[#eef6ff]">
 
               {/* IMAGE */}
-              <div className="relative flex min-h-[480px] items-center justify-center border-b border-[#1677ff]/10 bg-[#f8fbff] p-5 sm:p-8 lg:min-h-[620px] lg:border-b-0 lg:border-r">
-                <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[26px] border border-[#1677ff]/12 bg-white p-4 shadow-[0_15px_45px_rgba(18,55,100,0.08)] sm:p-7">
 
-                  <img
-                    key={selectedTool.image}
-                    src={selectedTool.image}
-                    alt={`${selectedTool.name} — ${selectedTool.short}`}
-                    className="block max-h-[560px] w-full object-contain object-center transition-all duration-500"
-                  />
+              <img
+                key={selectedTool.image}
+                src={selectedTool.image}
+                alt={selectedTool.name}
+                className="h-full min-h-[450px] w-full object-cover transition-all duration-700"
+              />
 
-                  <div className="pointer-events-none absolute inset-0 rounded-[26px] ring-1 ring-inset ring-[#1677ff]/10" />
+              {/* IMAGE FALLBACK / SPACE */}
 
-                  <div className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-xs font-black text-[#1677ff] shadow-[0_8px_24px_rgba(18,55,100,0.10)] ring-1 ring-[#1677ff]/10">
-                    {selectedTool.number} · {selectedTool.name}
-                  </div>
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-cyan-400/10 via-transparent to-blue-900/30">
+
+                <div className="rounded-full bg-[#1677ff]/10 px-5 py-3 text-xs font-bold uppercase tracking-[0.2em] text-[#71839a] backdrop-blur-sm">
+                  {selectedTool.name} Visual
                 </div>
+
               </div>
 
-              {/* MATTER */}
-              <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-14">
+              {/* NUMBER */}
 
-                <div className="inline-flex w-fit rounded-full border border-[#1677ff]/15 bg-[#eef6ff] px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#1677ff]">
-                  {selectedTool.short}
-                </div>
-
-                <h3 className="mt-5 text-4xl font-black tracking-[-0.045em] text-[#07172f] sm:text-5xl">
-                  {selectedTool.title}
-                </h3>
-
-                <p className="mt-6 text-lg leading-8 text-[#5b6f88]">
-                  {selectedTool.description}
-                </p>
-
-                <div className="mt-8">
-                  <div className="text-xs font-black uppercase tracking-[0.2em] text-[#8091a7]">
-                    Key Capabilities
-                  </div>
-
-                  <div className="mt-5 space-y-3">
-                    {selectedTool.capabilities.map((capability) => (
-                      <div
-                        key={capability}
-                        className="flex items-start gap-3 rounded-xl border border-[#1677ff]/10 bg-[#f8fbff] px-4 py-3 text-sm leading-6 text-[#425a75]"
-                      >
-                        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1677ff] text-xs font-black text-[#07172f]">
-                          ✓
-                        </span>
-                        <span>{capability}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mt-9 flex flex-wrap items-end justify-between gap-6 border-t border-[#1677ff]/10 pt-7">
-                  <div>
-                    <div className="text-4xl font-black text-[#1677ff]">
-                      {selectedTool.metric}
-                    </div>
-                    <div className="mt-2 text-sm text-[#8091a7]">
-                      {selectedTool.metricLabel}
-                    </div>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const nextIndex =
-                        (tools.findIndex(
-                          (tool) => tool.id === selectedTool.id
-                        ) +
-                          1) %
-                        tools.length;
-
-                      setActiveTool(tools[nextIndex].id);
-                    }}
-                    className="rounded-full bg-[#1677ff] px-6 py-3 text-sm font-black text-white transition duration-300 hover:-translate-y-1 hover:bg-[#075dcc]"
-                  >
-                    Next Tool →
-                  </button>
-                </div>
-
-                <div className="mt-5 text-xs font-semibold text-[#94a3b8]">
-                  {isPaused
-                    ? "Paused — move the cursor away to continue"
-                    : "Automatically changing every 6 seconds"}
-                </div>
+              <div className="absolute left-7 top-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#eef6ff] text-sm font-black text-[#1677ff] backdrop-blur-md">
+                {selectedTool.number}
               </div>
+
             </div>
+
+
+            {/* CONTENT */}
+
+            <div className="p-8 sm:p-12 lg:p-16">
+
+              <div className="text-xs font-black uppercase tracking-[0.25em] text-[#1677ff]">
+                {selectedTool.short}
+              </div>
+
+
+              <h3 className="mt-5 text-4xl font-black tracking-[-0.045em] text-white sm:text-5xl">
+                {selectedTool.title}
+              </h3>
+
+
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-[#5b6f88]">
+                {selectedTool.description}
+              </p>
+
+
+              {/* CAPABILITIES */}
+
+              <div className="mt-9">
+
+                <div className="text-xs font-black uppercase tracking-[0.2em] text-[#71839a]">
+                  Key Capabilities
+                </div>
+
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+
+                  {selectedTool.capabilities.map((capability) => (
+
+                    <div
+                      key={capability}
+                      className="flex items-center gap-3 text-sm text-[#425a75]"
+                    >
+
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1677ff]/15 text-[#1677ff]">
+                        ✓
+                      </span>
+
+                      {capability}
+
+                    </div>
+
+                  ))}
+
+                </div>
+
+              </div>
+
+
+              {/* METRIC */}
+
+              <div className="mt-10 flex flex-wrap items-end justify-between gap-6 border-t border-[#1677ff]/10 pt-8">
+
+                <div>
+
+                  <div className="text-4xl font-black text-[#1677ff]">
+                    {selectedTool.metric}
+                  </div>
+
+                  <div className="mt-2 text-sm text-[#71839a]">
+                    {selectedTool.metricLabel}
+                  </div>
+
+                </div>
+
+
+                <button
+                  onClick={() => {
+                    const nextIndex =
+                      (tools.findIndex(
+                        (tool) => tool.id === selectedTool.id
+                      ) +
+                        1) %
+                      tools.length;
+
+                    setActiveTool(tools[nextIndex].id);
+                  }}
+                  className="rounded-full bg-white px-6 py-3 text-sm font-black text-[#07172f] transition duration-300 hover:bg-[#1677ff]"
+                >
+                  Next Tool →
+                </button>
+
+              </div>
+
+            </div>
+
           </div>
 
-          {/* TOOL SUMMARY */}
+
+          {/* TOOL DESCRIPTION STRIP */}
+
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
-            {[
-              ["7", "Integrated ARTEMIS tools"],
-              ["70–95%", "Reduced consultant dependency"],
-              ["30–40%", "Faster implementation"],
-            ].map(([value, label]) => (
-              <div
-                key={label}
-                className="rounded-[22px] border border-[#1677ff]/10 bg-[#f8fbff] p-6"
-              >
-                <div className="text-2xl font-black text-[#1677ff]">
-                  {value}
-                </div>
-                <div className="mt-2 text-sm text-[#71839a]">
-                  {label}
-                </div>
+
+            <div className="rounded-[24px] bg-white/[0.04] p-6">
+
+              <div className="text-2xl font-black text-white">
+                7
               </div>
-            ))}
+
+              <div className="mt-2 text-sm text-[#71839a]">
+                Integrated ARTEMIS tools
+              </div>
+
+            </div>
+
+
+            <div className="rounded-[24px] bg-white/[0.04] p-6">
+
+              <div className="text-2xl font-black text-white">
+                70–95%
+              </div>
+
+              <div className="mt-2 text-sm text-[#71839a]">
+                Reduced consultant dependency
+              </div>
+
+            </div>
+
+
+            <div className="rounded-[24px] bg-white/[0.04] p-6">
+
+              <div className="text-2xl font-black text-white">
+                30–40%
+              </div>
+
+              <div className="mt-2 text-sm text-[#71839a]">
+                Faster implementation
+              </div>
+
+            </div>
+
           </div>
 
         </div>
+
       </section>
+
 
       {/* =====================================================
           WHY WE EXCEL
@@ -732,21 +865,15 @@ export default function HomePage() {
 
                 {/* IMAGE SPACE */}
 
-                <div className="relative h-[310px] overflow-hidden bg-[#eaf3fb] p-4">
+                <div className="relative h-[310px] overflow-hidden bg-[#dcecff]">
 
-                  <div className="relative flex h-full items-center justify-center overflow-hidden rounded-[22px] bg-white shadow-inner">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  />
 
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="max-h-full max-w-full object-contain p-5 transition duration-700 group-hover:scale-105"
-                    />
-
-                    <div className="pointer-events-none absolute inset-0 rounded-[22px] ring-1 ring-inset ring-slate-200/80" />
-
-                  </div>
-
-                  <div className="absolute left-7 top-7 flex h-11 w-11 items-center justify-center rounded-full bg-[#07172f]/90 text-xs font-black text-[#1677ff] shadow-lg backdrop-blur-md">
+                  <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center rounded-full bg-[#07172f]/80 text-xs font-black text-[#1677ff] backdrop-blur-md">
                     {item.number}
                   </div>
 
@@ -836,7 +963,7 @@ export default function HomePage() {
                 className="group flex gap-6"
               >
 
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[#2877e8] text-sm font-black text-[#07172f] transition duration-300 group-hover:scale-110 group-hover:bg-[#07172f]">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[#2877e8] text-sm font-black text-white transition duration-300 group-hover:scale-110 group-hover:bg-[#07172f]">
                   {item.number}
                 </div>
 
@@ -1009,7 +1136,7 @@ export default function HomePage() {
         className="relative overflow-hidden bg-[#07172f]"
       >
 
-        <div className="absolute left-0 top-0 h-[400px] w-[400px] rounded-full bg-cyan-400/10 blur-[130px]" />
+        <div className="absolute left-0 top-0 h-[400px] w-[400px] rounded-full bg-[#1677ff]/6 blur-[130px]" />
 
         <div className="absolute right-0 bottom-0 h-[400px] w-[400px] rounded-full bg-blue-500/10 blur-[130px]" />
 
@@ -1020,7 +1147,7 @@ export default function HomePage() {
             Start Your Transformation
           </span>
 
-          <h2 className="mx-auto mt-6 max-w-4xl text-5xl font-black tracking-[-0.055em] text-[#07172f] sm:text-6xl">
+          <h2 className="mx-auto mt-6 max-w-4xl text-5xl font-black tracking-[-0.055em] text-white sm:text-6xl">
             Ready to transform your ERP journey?
           </h2>
 
@@ -1044,6 +1171,150 @@ export default function HomePage() {
 
       </section>
 
+
+      {/* =====================================================
+          FOOTER
+      ===================================================== */}
+
+      <footer className="bg-[#030b18] text-white">
+
+        <div className="mx-auto max-w-[1500px] px-6 py-16 sm:px-10 lg:px-16">
+
+          <div className="grid gap-12 md:grid-cols-4">
+
+            {/* BRAND */}
+
+            <div>
+
+              <div className="flex items-center gap-3">
+
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white font-black text-[#0873d0]">
+                  PPT
+                </div>
+
+                <div>
+                  <div className="font-black">
+                    PROCESS POINT
+                  </div>
+
+                  <div className="text-[9px] uppercase tracking-[0.2em] text-[#1677ff]">
+                    Enabling Business Processes
+                  </div>
+                </div>
+
+              </div>
+
+              <p className="mt-6 max-w-xs text-sm leading-7 text-[#71839a]">
+                ERP transformation powered by structured methodology,
+                specialized tools and platform expertise.
+              </p>
+
+            </div>
+
+
+            {/* COMPETENCIES */}
+
+            <div>
+
+              <h3 className="font-black">
+                Competencies
+              </h3>
+
+              <div className="mt-5 space-y-3 text-sm text-white/55">
+
+                <a
+                  href="/oracle"
+                  className="block transition hover:text-[#1677ff]"
+                >
+                  Oracle
+                </a>
+
+                <a
+                  href="/microsoft-dynamics"
+                  className="block transition hover:text-[#1677ff]"
+                >
+                  Microsoft Dynamics
+                </a>
+
+                <a
+                  href="/sap"
+                  className="block transition hover:text-[#1677ff]"
+                >
+                  SAP
+                </a>
+
+              </div>
+
+            </div>
+
+
+            {/* SOLUTIONS */}
+
+            <div>
+
+              <h3 className="font-black">
+                Solutions
+              </h3>
+
+              <div className="mt-5 space-y-3 text-sm text-white/55">
+
+                <a
+                  href="#artemis"
+                  className="block transition hover:text-[#1677ff]"
+                >
+                  ARTEMIS Methodology
+                </a>
+
+                <a
+                  href="/testing-automation"
+                  className="block transition hover:text-[#1677ff]"
+                >
+                  Application Testing Automation
+                </a>
+
+              </div>
+
+            </div>
+
+
+            {/* COMPANY */}
+
+            <div>
+
+              <h3 className="font-black">
+                Company
+              </h3>
+
+              <div className="mt-5 space-y-3 text-sm text-white/55">
+
+                <a
+                  href="/about"
+                  className="block transition hover:text-[#1677ff]"
+                >
+                  About Us
+                </a>
+
+                <a
+                  href="/contact"
+                  className="block transition hover:text-[#1677ff]"
+                >
+                  Contact Us
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div className="mt-14 border-t border-[#1677ff]/10 pt-7 text-sm text-white/35">
+            © {new Date().getFullYear()} Process Point. All rights reserved.
+          </div>
+
+        </div>
+
+      </footer>
 
     </main>
   );
