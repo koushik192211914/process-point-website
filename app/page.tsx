@@ -259,7 +259,7 @@ export default function HomePage() {
 
                 <a
                   href="#platforms"
-                  className="rounded-full bg-white px-7 py-4 text-sm font-bold text-[#07172f] ring-1 ring-[#1677ff]/15 transition duration-300 hover:bg-white/10"
+                  className="rounded-full bg-white px-7 py-4 text-sm font-bold text-[#07172f] ring-1 ring-[#1677ff]/15 ring-1 ring-white/15 transition duration-300 hover:bg-white/10"
                 >
                   Explore Platforms
                 </a>
@@ -275,12 +275,12 @@ export default function HomePage() {
                 public/assets/erp-implementation.png
             ================================================= */}
 
-            <div className="relative min-h-[520px] overflow-hidden rounded-[40px] border border-[#1677ff]/15 bg-[#f8fbff] p-4 shadow-[0_20px_55px_rgba(22,119,255,0.10)] sm:p-6">
+            <div className="relative min-h-[520px] overflow-hidden rounded-[40px] border border-white/10 bg-[#f8fbff] p-4 shadow-[0_30px_90px_rgba(0,0,0,0.28)] sm:p-6">
 
               {/* Decorative frame */}
-              <div className="absolute inset-4 rounded-[30px] border border-[#1677ff]/15 sm:inset-6" />
+              <div className="absolute inset-4 rounded-[30px] border border-cyan-300/15 sm:inset-6" />
 
-              <div className="relative flex h-[488px] items-center justify-center overflow-hidden rounded-[30px] bg-white sm:h-[488px]">
+              <div className="relative flex h-[488px] items-center justify-center overflow-hidden rounded-[30px] bg-white/5 sm:h-[488px]">
 
                 <img
                   src="/assets/hero-ai-erp.png"
@@ -288,9 +288,9 @@ export default function HomePage() {
                   className="max-h-full max-w-full object-contain p-3 sm:p-5"
                 />
 
-                <div className="pointer-events-none absolute inset-0 rounded-[30px] ring-1 ring-inset ring-[#1677ff]/10" />
+                <div className="pointer-events-none absolute inset-0 rounded-[30px] ring-1 ring-inset ring-white/10" />
 
-                <div className="absolute bottom-5 left-5 rounded-full border border-[#1677ff]/15 bg-white px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-[#1677ff] backdrop-blur-md">
+                <div className="absolute bottom-5 left-5 rounded-full border border-white/10 bg-[#1677ff]/75 px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-cyan-200 backdrop-blur-md">
                   ERP Transformation
                 </div>
 
@@ -443,14 +443,14 @@ export default function HomePage() {
 
                   <div
                     key={label}
-                    className="group rounded-[26px] border border-[#1677ff]/15 bg-[#eef6ff] p-7 text-[#07172f] transition duration-300 hover:-translate-y-2 hover:bg-[#e5f1ff]"
+                    className="group rounded-[26px] bg-[#236be8] p-7 text-white transition duration-300 hover:-translate-y-2 hover:bg-[#155bd0]"
                   >
 
                     <div className="text-3xl font-black">
                       {value}
                     </div>
 
-                    <div className="mt-3 text-sm leading-6 text-[#5b6f88]">
+                    <div className="mt-3 text-sm leading-6 text-[#07172f]/75">
                       {label}
                     </div>
 
@@ -553,19 +553,19 @@ export default function HomePage() {
             <div className="grid lg:grid-cols-[1.18fr_0.82fr]">
 
               {/* IMAGE */}
-              <div className="relative flex min-h-[520px] items-center justify-center border-b border-[#1677ff]/10 bg-[#f4f9ff] p-4 sm:p-6 lg:min-h-[680px] lg:border-b-0 lg:border-r">
-                <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[26px] border border-[#1677ff]/12 bg-white p-2 shadow-[0_15px_45px_rgba(18,55,100,0.08)] sm:p-4">
+              <div className="relative flex min-h-[480px] items-center justify-center border-b border-[#1677ff]/10 bg-[#f8fbff] p-5 sm:p-8 lg:min-h-[620px] lg:border-b-0 lg:border-r">
+                <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[26px] border border-[#1677ff]/12 bg-white p-4 shadow-[0_15px_45px_rgba(18,55,100,0.08)] sm:p-7">
 
                   <img
                     key={selectedTool.image}
                     src={selectedTool.image}
                     alt={`${selectedTool.name} — ${selectedTool.short}`}
-                    className="block h-full max-h-[640px] w-full object-contain object-center transition-all duration-500"
+                    className="block max-h-[560px] w-full object-contain object-center transition-all duration-500"
                   />
 
                   <div className="pointer-events-none absolute inset-0 rounded-[26px] ring-1 ring-inset ring-[#1677ff]/10" />
 
-                  <div className="absolute left-5 top-5 rounded-full border border-[#1677ff]/15 bg-white px-4 py-2 text-xs font-black text-[#1677ff] shadow-[0_8px_24px_rgba(18,55,100,0.10)]">
+                  <div className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-xs font-black text-[#1677ff] shadow-[0_8px_24px_rgba(18,55,100,0.10)] ring-1 ring-[#1677ff]/10">
                     {selectedTool.number} · {selectedTool.name}
                   </div>
                 </div>
@@ -746,7 +746,7 @@ export default function HomePage() {
 
                   </div>
 
-                  <div className="absolute left-7 top-7 flex h-11 w-11 items-center justify-center rounded-full bg-[#eef6ff] text-xs font-black text-[#1677ff] ring-1 ring-[#1677ff]/15 shadow-lg backdrop-blur-md">
+                  <div className="absolute left-7 top-7 flex h-11 w-11 items-center justify-center rounded-full bg-[#07172f]/90 text-xs font-black text-[#1677ff] shadow-lg backdrop-blur-md">
                     {item.number}
                   </div>
 
@@ -836,7 +836,7 @@ export default function HomePage() {
                 className="group flex gap-6"
               >
 
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[#2877e8] text-sm font-black text-[#07172f] transition duration-300 group-hover:scale-110 group-hover:bg-[#1677ff]">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[#2877e8] text-sm font-black text-[#07172f] transition duration-300 group-hover:scale-110 group-hover:bg-[#07172f]">
                   {item.number}
                 </div>
 
@@ -1006,12 +1006,12 @@ export default function HomePage() {
 
       <section
         id="contact"
-        className="relative overflow-hidden bg-[#f4f9ff] border-t border-[#1677ff]/10"
+        className="relative overflow-hidden bg-[#07172f]"
       >
 
-        <div className="absolute left-0 top-0 h-[400px] w-[400px] rounded-full bg-[#1677ff]/8 blur-[130px]" />
+        <div className="absolute left-0 top-0 h-[400px] w-[400px] rounded-full bg-cyan-400/10 blur-[130px]" />
 
-        <div className="absolute right-0 bottom-0 h-[400px] w-[400px] rounded-full bg-[#1677ff]/6 blur-[130px]" />
+        <div className="absolute right-0 bottom-0 h-[400px] w-[400px] rounded-full bg-blue-500/10 blur-[130px]" />
 
 
         <div className="relative mx-auto max-w-[1200px] px-6 py-28 text-center sm:px-10">
@@ -1033,7 +1033,7 @@ export default function HomePage() {
 
             <a
               href="/contact"
-              className="inline-flex rounded-full bg-[#1677ff] px-8 py-4 font-black text-white transition duration-300 hover:-translate-y-1 hover:bg-[#075dcc]"
+              className="inline-flex rounded-full bg-[#1677ff] px-8 py-4 font-black text-[#07172f] transition duration-300 hover:-translate-y-1 hover:bg-white"
             >
               Talk to an Expert →
             </a>
