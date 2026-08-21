@@ -1006,12 +1006,12 @@ export default function HomePage() {
 
       <section
         id="contact"
-        className="relative overflow-hidden bg-[#07172f]"
+        className="relative overflow-hidden bg-[#087f9f]"
       >
 
-        <div className="absolute left-0 top-0 h-[400px] w-[400px] rounded-full bg-cyan-400/10 blur-[130px]" />
+        <div className="absolute left-0 top-0 h-[400px] w-[400px] rounded-full bg-cyan-200/15 blur-[130px]" />
 
-        <div className="absolute right-0 bottom-0 h-[400px] w-[400px] rounded-full bg-blue-500/10 blur-[130px]" />
+        <div className="absolute right-0 bottom-0 h-[400px] w-[400px] rounded-full bg-blue-300/15 blur-[130px]" />
 
 
         <div className="relative mx-auto max-w-[1200px] px-6 py-28 text-center sm:px-10">
@@ -1020,11 +1020,11 @@ export default function HomePage() {
             Start Your Transformation
           </span>
 
-          <h2 className="mx-auto mt-6 max-w-4xl text-5xl font-black tracking-[-0.055em] text-[#07172f] sm:text-6xl">
+          <h2 className="mx-auto mt-6 max-w-4xl text-5xl font-black tracking-[-0.055em] text-white sm:text-6xl">
             Ready to transform your ERP journey?
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-[#5b6f88]">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/90">
             Talk with our ERP specialists about your implementation,
             platform strategy and transformation goals.
           </p>
@@ -1033,7 +1033,7 @@ export default function HomePage() {
 
             <a
               href="/contact"
-              className="inline-flex rounded-full bg-[#1677ff] px-8 py-4 font-black text-[#07172f] transition duration-300 hover:-translate-y-1 hover:bg-white"
+              className="inline-flex rounded-full bg-white px-8 py-4 font-black text-[#087f9f] transition duration-300 hover:-translate-y-1 hover:bg-[#e9fbff]"
             >
               Talk to an Expert →
             </a>
