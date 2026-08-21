@@ -283,7 +283,7 @@ export default function HomePage() {
               <div className="relative flex h-[488px] items-center justify-center overflow-hidden rounded-[30px] bg-white/5 sm:h-[488px]">
 
                 <img
-                  src="/assets/hero-ai-erp.png"
+                  src="/assets/hero.png"
                   alt="ERP implementation and ARTEMIS transformation"
                   className="max-h-full max-w-full object-contain p-3 sm:p-5"
                 />
